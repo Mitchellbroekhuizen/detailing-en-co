@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Detailing &amp;Co | Mobiele detailing in Zaandam</title>
+<meta name="description" content="Detailing &amp;Co: mobiele auto- en motordetailing in Zaandam en omgeving. Bereken je prijs en boek in een minuut.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&amp;display=swap" rel="stylesheet">
+<style>
+/* Hallmark v2.0.0 | Detailing &Co | custom direction: one family (Archivo) used wide and heavy for the voice, normal for reading; black, asphalt and gold | signature: the live price calculator by vehicle type | job: book */
+/* critique: the car photos and the calculator carry the page; gold is reserved for price, the chosen option and the one action */
+:root{
+  --black:#0E0E0F; --asphalt:#151517; --asphalt-2:#1D1D20; --asphalt-3:#26262A;
+  --ink:#F4F1EA; --ink-2:#C9C4B9; --muted:#A7A39A; --rule:#2A2A2E; --rule-2:#3A3A3F;
+  --gold:#C8A45C; --gold-2:#E0C489; --gold-ink:#0E0E0F; --focus:#E0C489;
+  --scrim:rgb(14 14 15 / 0.86); --scrim-0:rgb(14 14 15 / 0); --lift:0 24px 60px -28px rgb(0 0 0 / 0.9);
+  --font:"Archivo", ui-sans-serif, system-ui, sans-serif;
+  --r-s:8px; --r-m:14px; --r-l:22px;
+}
+*{box-sizing:border-box}
+html,body{overflow-x:clip}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--black);color:var(--ink);font-family:var(--font);font-size:17px;line-height:1.6;font-stretch:100%}
+img{max-width:100%;display:block}
+a{color:var(--gold)}a:hover{color:var(--gold-2)}
+h1,h2,h3{margin:0;overflow-wrap:break-word;min-width:0;text-wrap:balance}
+p{margin:0}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+.display{font-stretch:125%;font-weight:800;text-transform:uppercase;line-height:1.02;letter-spacing:-0.01em}
+.h2{font-stretch:125%;font-weight:800;text-transform:uppercase;line-height:1;font-size:clamp(34px,4.6vw,60px)}
+.lede{color:var(--ink-2);max-width:46ch}
+.muted{color:var(--muted)}
+.gold{color:var(--gold)}
+section{padding:112px 0}
+.band{background:var(--asphalt);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:52px;padding:16px 28px;border-radius:999px;font:inherit;font-weight:700;font-stretch:112%;text-decoration:none;cursor:pointer;border:1px solid transparent;transition:background-color .15s ease,color .15s ease,border-color .15s ease}
+.btn-gold{background:var(--gold);color:var(--gold-ink)}
+.btn-gold:hover{background:var(--gold-2);color:var(--gold-ink)}
+.btn-line{border-color:var(--rule-2);color:var(--ink);background:transparent}
+.btn-line:hover{border-color:var(--ink-2);color:var(--ink)}
+.btn:active{transform:translateY(1px)}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible,label:focus-within{outline:2px solid var(--focus);outline-offset:3px}
+.skip{position:absolute;left:-9999px;top:12px;z-index:50;background:var(--gold);color:var(--gold-ink);padding:12px 20px;border-radius:999px;font-weight:700;text-decoration:none}
+.skip:focus{left:12px}
+
+/* header */
+header.top{position:absolute;top:0;left:0;right:0;z-index:5}
+.top .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;padding-top:24px;padding-bottom:24px}
+.mark{display:inline-flex;align-items:baseline;gap:8px;text-decoration:none;color:var(--ink);font-stretch:125%;font-weight:800;font-size:22px;letter-spacing:0.02em}
+.mark span{color:var(--gold)}
+.top nav{display:flex;flex-wrap:wrap;align-items:center;gap:8px 28px;font-size:16px;font-weight:500}
+.top nav a{color:var(--ink);text-decoration:none}
+.top nav a:hover{color:var(--gold)}
+
+/* hero */
+.hero{position:relative;min-height:760px;display:flex;align-items:flex-end;padding:0;overflow:hidden}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% 55%}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--scrim) 0%,var(--scrim) 30%,var(--scrim-0) 75%),linear-gradient(0deg,var(--black) 0%,var(--scrim-0) 40%)}
+.hero .wrap{position:relative;z-index:1;width:100%;padding-top:160px;padding-bottom:72px}
+.hero h1{font-size:clamp(48px,7.4vw,108px);max-width:11ch}
+.hero .lede{margin-top:24px;font-size:20px;max-width:34ch}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.facts{display:flex;flex-wrap:wrap;gap:12px 40px;margin-top:44px;padding-top:24px;border-top:1px solid var(--rule-2);font-size:16px;color:var(--ink-2)}
+.facts strong{display:block;color:var(--ink);font-weight:700}
+
+/* calculator */
+.calc{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:40px;align-items:start;margin-top:48px}
+.step-title{font-size:15px;font-weight:600;color:var(--muted);margin:0 0 12px}
+.seg{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 36px;padding:0;border:0}
+.seg legend,.opts legend,.xtras legend{padding:0}
+.chip{position:relative}
+.chip input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.chip span{display:inline-flex;align-items:center;min-height:46px;padding:12px 20px;border-radius:999px;border:1px solid var(--rule-2);color:var(--ink-2);font-weight:500}
+.chip input:checked+span{background:var(--ink);border-color:var(--ink);color:var(--black);font-weight:700}
+.chip:hover span{border-color:var(--ink-2)}
+.chip input:focus-visible+span{outline:2px solid var(--focus);outline-offset:3px}
+.opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:12px;margin:0 0 36px;padding:0;border:0}
+.opt{position:relative;display:block;cursor:pointer}
+.opt input{position:absolute;opacity:0;margin:0}
+.opt .box{display:flex;flex-direction:column;gap:8px;height:100%;padding:20px 24px;border-radius:var(--r-m);border:1px solid var(--rule-2);background:var(--asphalt)}
+.opt:hover .box{border-color:var(--ink-2)}
+.opt input:checked+.box{border-color:var(--gold);box-shadow:inset 0 0 0 1px var(--gold)}
+.opt input:focus-visible+.box{outline:2px solid var(--focus);outline-offset:3px}
+.opt .name{font-weight:700;font-size:18px}
+.opt .price{font-variant-numeric:tabular-nums;font-stretch:125%;font-weight:800;font-size:28px;color:var(--gold);line-height:1.1}
+.opt .what{font-size:15px;color:var(--ink-2)}
+.opt .time{font-size:14px;color:var(--muted)}
+.xtras{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:12px;margin:0;padding:0;border:0}
+.check{display:flex;align-items:center;gap:12px;min-height:52px;padding:12px 16px;border-radius:var(--r-s);border:1px solid var(--rule);background:var(--asphalt);cursor:pointer}
+.check input{width:20px;height:20px;accent-color:var(--gold);margin:0}
+.check .p{margin-left:auto;color:var(--muted);font-size:15px}
+.sum{position:sticky;top:24px;padding:32px;border-radius:var(--r-l);background:var(--asphalt-2);border:1px solid var(--rule-2)}
+.sum h3{font-size:15px;font-weight:600;color:var(--muted)}
+.sum .total{font-variant-numeric:tabular-nums;font-stretch:125%;font-weight:800;font-size:clamp(48px,6vw,72px);line-height:1;margin:12px 0 4px;color:var(--gold)}
+.sum ul{list-style:none;margin:24px 0;padding:0;border-top:1px solid var(--rule)}
+.sum li{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid var(--rule);font-size:16px}
+.sum li span:last-child{color:var(--ink-2);white-space:nowrap}
+.sum .btn{width:100%}
+.note{font-size:14px;color:var(--muted);margin-top:16px}
+
+/* work strip */
+.strip{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(min(84%,440px),1fr);gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:16px;margin-top:40px}
+.strip figure{margin:0;scroll-snap-align:start;display:flex;flex-direction:column;gap:12px}
+.strip img{width:100%;height:420px;object-fit:cover;border-radius:var(--r-m);border:1px solid var(--rule)}
+.strip figcaption{font-size:15px;color:var(--muted)}
+
+/* before after */
+.ba{position:relative;max-width:800px;margin:40px auto 0;border-radius:var(--r-l);overflow:hidden;border:1px solid var(--rule-2);aspect-ratio:16/10;background:var(--asphalt-2);--pos:50%}
+.ba .pane{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ba .before{background:var(--asphalt-3)}
+.ba .after{background:var(--asphalt-2);clip-path:inset(0 0 0 var(--pos))}
+.ba .tag{position:absolute;top:16px;padding:8px 16px;border-radius:999px;background:var(--scrim);font-size:14px;font-weight:600;color:var(--ink)}
+.ba .tag.l{left:16px}.ba .tag.r{right:16px}
+.ba .tag.c{top:auto;bottom:16px;left:16px;background:var(--gold);color:var(--gold-ink)}
+.ba .line{position:absolute;top:0;bottom:0;left:var(--pos);width:2px;background:var(--gold);transform:translateX(-1px);pointer-events:none}
+.ba .knob{position:absolute;top:50%;left:var(--pos);width:48px;height:48px;border-radius:50%;background:var(--gold);transform:translate(-50%,-50%);pointer-events:none;display:flex;align-items:center;justify-content:center;color:var(--gold-ink)}
+.ba input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0}
+
+/* steps */
+.how{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:40px;margin-top:48px;padding:0;list-style:none}
+.how li{border-top:2px solid var(--gold);padding-top:24px}
+.how .n{font-stretch:125%;font-weight:800;font-size:44px;line-height:1;color:var(--gold)}
+.how h3{font-size:21px;margin:16px 0 8px}
+
+/* team */
+.team{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),minmax(0,1fr)));gap:56px;align-items:center}
+.team img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:var(--r-l);border:1px solid var(--rule)}
+.team figcaption{font-size:15px;color:var(--muted);margin-top:12px}
+
+/* plan */
+.plan{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:24px;align-items:end}
+.plan>div:first-child{grid-column:1/-1}
+#plan-kop{font-size:clamp(24px,5.4vw,60px);hyphens:none;overflow-wrap:normal}
+.plan .big{font-stretch:125%;font-weight:800;font-size:clamp(56px,7vw,96px);line-height:1;color:var(--gold)}
+
+/* area */
+.area{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:48px}
+.places{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:16px 0 0;padding:0}
+.places li{padding:8px 16px;border-radius:999px;border:1px solid var(--rule-2);font-size:16px}
+.row{display:flex;justify-content:space-between;gap:16px;padding:16px 0;border-top:1px solid var(--rule)}
+.row:last-child{border-bottom:1px solid var(--rule)}
+
+/* faq */
+.faq{max-width:860px;margin:40px auto 0}
+.faq details{border-top:1px solid var(--rule);padding:20px 0}
+.faq details:last-child{border-bottom:1px solid var(--rule)}
+.faq summary{cursor:pointer;font-weight:600;font-size:19px;list-style:none;display:flex;justify-content:space-between;gap:16px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";color:var(--gold);font-weight:700}
+.faq details[open] summary::after{content:"−"}
+.faq p{margin-top:12px;color:var(--ink-2)}
+
+/* booking wizard */
+.book{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:56px;align-items:start}
+.wiz{padding:32px;border-radius:var(--r-l);background:var(--asphalt-2);border:1px solid var(--rule-2)}
+.progress{display:flex;gap:8px;margin-bottom:28px}
+.progress i{flex:1;height:4px;border-radius:2px;background:var(--rule-2)}
+.progress i.on{background:var(--gold)}
+.wiz h3{font-size:22px;margin-bottom:20px}
+.field{display:flex;flex-direction:column;gap:8px;font-size:15px;color:var(--muted);margin-bottom:16px}
+.input{min-height:52px;padding:12px 16px;border-radius:var(--r-s);border:1px solid var(--rule-2);background:var(--black);color:var(--ink);font:inherit}
+.input[aria-invalid="true"]{border-color:var(--gold)}
+.err{font-size:14px;color:var(--gold)}
+.wiz .nav{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;margin-top:12px}
+.recap{list-style:none;padding:0;margin:0 0 20px;border-top:1px solid var(--rule)}
+.recap li{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid var(--rule);font-size:16px}
+.recap li span:first-child{color:var(--muted)}
+[hidden]{display:none !important}
+
+/* floating action */
+.float{position:fixed;right:20px;bottom:20px;z-index:20;box-shadow:var(--lift)}
+
+footer{border-top:1px solid var(--rule);padding:56px 0 40px;color:var(--muted);font-size:15px}
+footer .wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:32px}
+footer a{color:var(--ink-2);text-decoration:none}
+footer a:hover{color:var(--gold)}
+footer .col{display:flex;flex-direction:column;gap:12px}
+
+@media (max-width:700px){
+  section{padding:80px 0}
+  .hero{min-height:680px}
+  .hero::after{background:linear-gradient(0deg,var(--black) 0%,var(--scrim) 45%,var(--scrim-0) 100%)}
+  .top nav a:not(.btn){display:none}
+  .sum{position:static}
+  .strip img{height:320px}
+  .ba{aspect-ratio:4/3}
+}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{transition:none !important;animation:none !important}}
+</style>
+</head>
+<body>
+<a class="skip" href="#inhoud">Naar de inhoud</a>
+
+<header class="top">
+  <div class="wrap">
+    <a class="mark" href="#top" aria-label="Detailing &amp;Co, naar boven">DETAILING <span>&amp;Co</span></a>
+    <nav aria-label="Hoofdmenu">
+      <a href="#prijzen">Prijzen</a>
+      <a href="#werk">Ons werk</a>
+      <a href="#hoe">Hoe het werkt</a>
+      <a href="#vragen">Vragen</a>
+      <a class="btn btn-gold" href="#boeken" style="min-height:44px;padding:10px 20px">Boek nu</a>
+    </nav>
+  </div>
+</header>
+
+<main id="inhoud">
+<section class="hero" id="top" aria-labelledby="hero-kop">
+  <img src="img/co-hero.jpg" alt="Witte Skoda Octavia VRS met Detailing &amp;Co-showplaat, net gewassen" width="1920" height="1080" fetchpriority="high">
+  <div class="wrap">
+    <h1 id="hero-kop" class="display">Showroomglans op je eigen oprit.</h1>
+    <p class="lede">Mobiele detailing voor auto en motor in Zaandam en omgeving.</p>
+    <div class="ctas">
+      <a class="btn btn-gold" href="#prijzen">Bereken je prijs</a>
+      <a class="btn btn-line" href="https://wa.me/31600000000">App ons</a>
+    </div>
+    <div class="facts">
+      <p><strong>Vaste prijs vooraf</strong>Geen verrassingen achteraf</p>
+      <p><strong>Avond en zaterdag</strong>Als jij thuis bent</p>
+      <p><strong>Alles mee</strong>Eigen water, stroom en opvangmat</p>
+    </div>
+  </div>
+</section>
+
+<section id="prijzen" aria-labelledby="prijzen-kop">
+  <div class="wrap">
+    <h2 id="prijzen-kop" class="h2">Bereken je prijs</h2>
+    <p class="lede" style="margin-top:16px">Kies wat je rijdt en welk pakket. De prijs rekent meteen mee, voorrijden binnen 15 km zit erbij.</p>
+    <div class="calc">
+      <div>
+        <fieldset class="seg" id="voertuig">
+          <legend class="step-title">1. Wat rijd je?</legend>
+          <label class="chip"><input type="radio" name="voertuig" value="hatch" checked><span>Hatchback</span></label>
+          <label class="chip"><input type="radio" name="voertuig" value="sedan"><span>Sedan of stationwagen</span></label>
+          <label class="chip"><input type="radio" name="voertuig" value="suv"><span>SUV of MPV</span></label>
+          <label class="chip"><input type="radio" name="voertuig" value="bus"><span>Bus</span></label>
+          <label class="chip"><input type="radio" name="voertuig" value="motor"><span>Motor</span></label>
+        </fieldset>
+        <fieldset class="opts" id="pakketten">
+          <legend class="step-title">2. Kies je pakket</legend>
+        </fieldset>
+        <fieldset class="xtras" id="extras">
+          <legend class="step-title">3. Extra’s (optioneel)</legend>
+        </fieldset>
+      </div>
+      <aside class="sum" aria-labelledby="sum-kop">
+        <h3 id="sum-kop">Jouw prijs</h3>
+        <p class="total" id="totaal" aria-live="polite">€210</p>
+        <p class="muted" id="duur">Ongeveer 3½ uur</p>
+        <ul id="regels"></ul>
+        <a class="btn btn-gold" href="#boeken" id="naar-boeken">Boek dit pakket</a>
+        <p class="note">Vaste prijs voor een normaal vervuilde auto. Erg vies? Dan zeggen we dat vooraf.</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section id="werk" class="band" aria-labelledby="werk-kop">
+  <div class="wrap">
+    <h2 id="werk-kop" class="h2">Ons werk</h2>
+    <p class="lede" style="margin-top:16px">We begonnen bij onze eigen auto’s. Swipe door de foto’s.</p>
+    <div class="strip" tabindex="0" aria-label="Foto’s van ons werk">
+      <figure><img src="img/co-golf-zij.jpg" alt="Rode Volkswagen Golf GTI met zilveren velgen en glanzende lak" width="1200" height="714" loading="lazy"><figcaption>Golf GTI, lak weer diep rood</figcaption></figure>
+      <figure><img src="img/co-octavia-achter.jpg" alt="Achterkant van een witte Skoda Octavia VRS, de lak spiegelt de lucht" width="900" height="1200" loading="lazy"><figcaption>Octavia VRS, spiegelende lak</figcaption></figure>
+      <figure><img src="img/co-golf-voor.jpg" alt="Voorkant van een rode Volkswagen Golf GTI met Detailing &amp;Co-showplaat" width="900" height="1170" loading="lazy"><figcaption>Golf GTI van voren</figcaption></figure>
+      <figure><img src="img/co-octavia-voor.jpg" alt="Witte Skoda Octavia VRS schuin van voren" width="1200" height="675" loading="lazy"><figcaption>Octavia VRS, net gewassen</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="ba-kop">
+  <div class="wrap">
+    <h2 id="ba-kop" class="h2">Voor en na</h2>
+    <p class="lede" style="margin-top:16px">Sleep het goud naar links en rechts. Dit voorbeeld is onze eigen Golf; hier komen straks foto’s van klanten.</p>
+    <div class="ba" id="ba">
+      <img class="pane before" src="img/co-voor.jpg" alt="Rode Golf GTI op een zomerse dag, voorbeeldfoto voor" width="800" height="500" loading="lazy">
+      <img class="pane after" src="img/co-na.jpg" alt="Dezelfde rode Golf GTI met glanzende lak, voorbeeldfoto na" width="800" height="500" loading="lazy">
+      <span class="tag l">Voor</span><span class="tag r">Na</span>
+      <span class="tag c">Voorbeeld</span>
+      <span class="line" aria-hidden="true"></span>
+      <span class="knob" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6"/></svg></span>
+      <input type="range" min="0" max="100" value="50" aria-label="Vergelijk voor en na">
+    </div>
+  </div>
+</section>
+
+<section id="hoe" class="band" aria-labelledby="hoe-kop">
+  <div class="wrap">
+    <h2 id="hoe-kop" class="h2">Hoe het werkt</h2>
+    <ol class="how">
+      <li><span class="n">1</span><h3>Je boekt in een minuut</h3><p class="lede">Kies je pakket en je voorkeursdag. Je aanvraag komt via WhatsApp bij ons binnen.</p></li>
+      <li><span class="n">2</span><h3>Wij komen naar je toe</h3><p class="lede">Met eigen water, stroom en opvangmat. Eerst lopen we samen om de auto.</p></li>
+      <li><span class="n">3</span><h3>Glans, dan pas betalen</h3><p class="lede">Na een laatste rondje betaal je met een betaalverzoek of pin. Je krijgt altijd een factuur.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section aria-labelledby="team-kop">
+  <div class="wrap team">
+    <figure style="margin:0">
+      <img src="img/co-octavia-achter.jpg" alt="Mitchells witte Skoda Octavia VRS" width="900" height="1200" loading="lazy">
+      <figcaption>Mitchells Octavia VRS, waar het begon</figcaption>
+    </figure>
+    <div style="display:flex;flex-direction:column;gap:22px">
+      <h2 id="team-kop" class="h2">Wij zijn Nick en Mitchell</h2>
+      <p class="lede">Twee vrienden uit Zaandam die hun eigen auto’s veel te vaak poetsen. Overdag werken we, ’s avonds en op zaterdag staan we bij jou op de oprit.</p>
+      <p class="lede">Eén auto per keer, nooit een borstel op je lak, en we zeggen eerlijk wat je auto nodig heeft. Ook als dat het goedkopere pakket is.</p>
+      <a class="btn btn-line" href="https://wa.me/31600000000" style="align-self:flex-start">Stel ons een vraag</a>
+    </div>
+  </div>
+</section>
+
+<section class="band" aria-labelledby="plan-kop">
+  <div class="wrap plan">
+    <div>
+      <h2 id="plan-kop" class="h2">Onderhoudsplan</h2>
+      <p class="lede" style="margin-top:16px">Elke 4 weken een Maintenance Wash, wij plannen hem in. Zo blijft je auto er altijd zo uitzien.</p>
+    </div>
+    <div><p class="big">€55</p><p class="muted">per 4 weken, voor je auto</p></div>
+    <div><p class="big">€90</p><p class="muted">per 4 weken, voor je motor, april tot en met oktober</p></div>
+  </div>
+</section>
+
+<section aria-labelledby="gebied-kop">
+  <div class="wrap area">
+    <div>
+      <h2 id="gebied-kop" class="h2">Waar en wanneer</h2>
+      <p class="lede" style="margin-top:16px">Voorrijden is gratis binnen 15 km van Zaandam. Verder weg? Vraag het ons.</p>
+      <ul class="places"><li>Zaandam</li><li>Koog aan de Zaan</li><li>Zaandijk</li><li>Wormerveer</li><li>Krommenie</li><li>Assendelft</li><li>Westzaan</li><li>Oostzaan</li></ul>
+    </div>
+    <div>
+      <h3 class="step-title">Werktijden</h3>
+      <div class="row"><span>Maandag tot en met vrijdag</span><span class="gold">vanaf 17:00</span></div>
+      <div class="row"><span>Zaterdag</span><span class="gold">de hele dag</span></div>
+      <div class="row"><span>Zondag</span><span class="muted">[op afspraak of gesloten]</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="vragen" class="band" aria-labelledby="vragen-kop">
+  <div class="wrap">
+    <h2 id="vragen-kop" class="h2" style="text-align:center">Vragen</h2>
+    <div class="faq">
+      <details><summary>Hebben jullie water en stroom van mij nodig?</summary><p>Nee. We nemen een eigen watertank en een stille aggregaat mee.</p></details>
+      <details><summary>Moet ik thuis zijn?</summary><p>Alleen aan het begin en het eind, voor het rondje om de auto. Voor een interieur hebben we de sleutel nodig.</p></details>
+      <details><summary>Mag wassen op straat wel?</summary><p>We werken op een opvangmat. Er gaat geen vuil water het riool in; wat we opvangen voeren we zelf af.</p></details>
+      <details><summary>En als het regent?</summary><p>Een interieur kan altijd. Voor de lak zoeken we je carport of garage, of we prikken samen een nieuwe dag.</p></details>
+      <details><summary>Welk pakket heb ik nodig?</summary><p>Stuur ons een paar foto’s via WhatsApp. We zeggen eerlijk wat nodig is.</p></details>
+      <details><summary>Zijn jullie verzekerd?</summary><p>Ja, voor schade aan je voertuig tijdens het werk. Bestaande schade leggen we vooraf samen vast op foto.</p></details>
+    </div>
+  </div>
+</section>
+
+<section id="boeken" aria-labelledby="boek-kop">
+  <div class="wrap book">
+    <div style="display:flex;flex-direction:column;gap:20px">
+      <h2 id="boek-kop" class="h2">Boek in drie stappen</h2>
+      <p class="lede">Je aanvraag gaat via WhatsApp naar ons. Je ziet het bericht eerst zelf voordat je het verstuurt. Binnen 24 uur hoor je wanneer we komen.</p>
+      <p class="muted">Liever bellen of appen zonder formulier? <a href="https://wa.me/31600000000">WhatsApp [je nummer]</a></p>
+    </div>
+    <div class="wiz">
+      <div class="progress" aria-hidden="true"><i class="on" data-p="1"></i><i data-p="2"></i><i data-p="3"></i></div>
+      <p class="muted" id="stap-label" aria-live="polite" style="font-size:14px;margin-bottom:8px">Stap 1 van 3</p>
+
+      <div data-step="1">
+        <h3>Wat mogen we doen?</h3>
+        <label class="field">Voertuig<select class="input" id="b-voertuig"></select></label>
+        <label class="field">Pakket<select class="input" id="b-pakket"></select></label>
+        <label class="field">Merk en model<input class="input" id="b-auto" type="text" placeholder="Bijv. Skoda Octavia"></label>
+        <div class="nav"><span></span><button class="btn btn-gold" type="button" data-next>Volgende</button></div>
+      </div>
+
+      <div data-step="2" hidden>
+        <h3>Wanneer en waar?</h3>
+        <fieldset class="seg" style="margin-bottom:20px">
+          <legend class="step-title">Voorkeur</legend>
+          <label class="chip"><input type="radio" name="moment" value="Doordeweekse avond" checked><span>Doordeweekse avond</span></label>
+          <label class="chip"><input type="radio" name="moment" value="Zaterdagochtend"><span>Zaterdagochtend</span></label>
+          <label class="chip"><input type="radio" name="moment" value="Zaterdagmiddag"><span>Zaterdagmiddag</span></label>
+        </fieldset>
+        <label class="field">Postcode (verplicht)<input class="input" id="b-postcode" type="text" autocomplete="postal-code" aria-describedby="e-postcode"><span class="err" id="e-postcode"></span></label>
+        <div class="nav"><button class="btn btn-line" type="button" data-prev>Terug</button><button class="btn btn-gold" type="button" data-next>Volgende</button></div>
+      </div>
+
+      <div data-step="3" hidden>
+        <h3>Hoe bereiken we je?</h3>
+        <label class="field">Je naam (verplicht)<input class="input" id="b-naam" type="text" autocomplete="name" aria-describedby="e-naam"><span class="err" id="e-naam"></span></label>
+        <label class="field">Telefoon (verplicht)<input class="input" id="b-tel" type="tel" autocomplete="tel" inputmode="tel" aria-describedby="e-tel"><span class="err" id="e-tel"></span></label>
+        <label class="field">Opmerking<input class="input" id="b-opm" type="text" placeholder="Bijv. hond in de auto, parkeren achter het huis"></label>
+        <div class="nav"><button class="btn btn-line" type="button" data-prev>Terug</button><button class="btn btn-gold" type="button" id="b-klaar">Bekijk aanvraag</button></div>
+      </div>
+
+      <div data-step="4" hidden>
+        <h3>Klopt dit?</h3>
+        <ul class="recap" id="recap"></ul>
+        <a class="btn btn-gold" id="b-wa" href="https://wa.me/31600000000" style="width:100%">Verstuur via WhatsApp</a>
+        <div class="nav"><button class="btn btn-line" type="button" data-prev>Aanpassen</button><span></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<a class="btn btn-gold float" href="#boeken" id="float">Boek nu</a>
+
+<footer>
+  <div class="wrap">
+    <div class="col"><span class="mark">DETAILING <span>&amp;Co</span></span><span>Mobiele detailing voor auto en motor, in Zaandam en omgeving.</span></div>
+    <nav class="col" aria-label="Voettekst"><a href="#prijzen">Prijzen</a><a href="#werk">Ons werk</a><a href="#hoe">Hoe het werkt</a><a href="#vragen">Vragen</a></nav>
+    <div class="col"><a href="https://wa.me/31600000000">WhatsApp [je nummer]</a><span>[info@detailingenco.nl]</span><a href="https://instagram.com/">Instagram [@handle]</a></div>
+    <div class="col"><span>Detailing &amp;Co vof</span><span>KVK [nummer]</span><span>Btw [nummer]</span></div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var NUMMER='31600000000';
+  var toeslag={hatch:0,sedan:0,suv:20,bus:40,motor:0};
+  var voertuigNaam={hatch:'Hatchback',sedan:'Sedan of stationwagen',suv:'SUV of MPV',bus:'Bus',motor:'Motor'};
+  var pakketten={
+    auto:[
+      {id:'wash',naam:'Maintenance Wash',prijs:65,va:false,duur:'Ongeveer 1¼ uur',wat:'Handwas, velgen en een laag bescherming.'},
+      {id:'interior',naam:'Interior Detail',prijs:100,va:false,duur:'Ongeveer 2 uur',wat:'Binnen tot in de naden, stoelen en ramen.'},
+      {id:'signature',naam:'Signature Detail',prijs:210,va:false,duur:'Ongeveer 3½ uur',wat:'Binnen en buiten, gekleid, maanden beschermd.'},
+      {id:'showroom',naam:'Showroom',prijs:325,va:true,duur:'6 tot 8 uur',wat:'Signature plus machinaal polijsten.'}
+    ],
+    motor:[
+      {id:'mwash',naam:'Wash & Protect',prijs:100,va:false,duur:'Ongeveer 1½ uur',wat:'Ontvetten, handwas, ketting en bescherming.'},
+      {id:'msig',naam:'Motor Signature',prijs:240,va:false,duur:'Ongeveer 4 uur',wat:'Plus kleien, lak en chroom polijsten.'}
+    ]
+  };
+  var extras=[{id:'motorruimte',naam:'Motorruimte',prijs:60},{id:'koplampen',naam:'Koplampen polijsten',prijs:30},{id:'haren',naam:'Dierenharen',prijs:40},{id:'leer',naam:'Leer voeden',prijs:39}];
+  var st={voertuig:'hatch',pakket:'signature',extras:{}};
+  var $=function(id){return document.getElementById(id);};
+  function soort(){return st.voertuig==='motor'?'motor':'auto';}
+  function lijst(){return pakketten[soort()];}
+  function vind(id){var l=lijst();for(var i=0;i<l.length;i++){if(l[i].id===id)return l[i];}return l[0];}
+  function euro(n){return '€'+n;}
+  function pakPrijs(p){return p.prijs+(soort()==='auto'?toeslag[st.voertuig]:0);}
+  function tekenPakketten(){
+    var fs=$('pakketten');var leg=fs.querySelector('legend');fs.innerHTML='';fs.appendChild(leg);
+    lijst().forEach(function(p){
+      var l=document.createElement('label');l.className='opt';
+      var i=document.createElement('input');i.type='radio';i.name='pakket';i.value=p.id;i.checked=p.id===st.pakket;
+      i.addEventListener('change',function(){st.pakket=p.id;reken();});
+      var b=document.createElement('span');b.className='box';
+      [['name',p.naam],['price',(p.va?'v.a. ':'')+euro(pakPrijs(p))],['what',p.wat],['time',p.duur]].forEach(function(x){var s=document.createElement('span');s.className=x[0];s.textContent=x[1];b.appendChild(s);});
+      l.appendChild(i);l.appendChild(b);fs.appendChild(l);
+    });
+  }
+  function tekenExtras(){
+    var fs=$('extras');fs.hidden=soort()==='motor';var leg=fs.querySelector('legend');fs.innerHTML='';fs.appendChild(leg);
+    extras.forEach(function(x){
+      var l=document.createElement('label');l.className='check';
+      var i=document.createElement('input');i.type='checkbox';i.checked=!!st.extras[x.id];
+      i.addEventListener('change',function(){st.extras[x.id]=i.checked;reken();});
+      var n=document.createElement('span');n.textContent=x.naam;var pr=document.createElement('span');pr.className='p';pr.textContent='+'+euro(x.prijs);
+      l.appendChild(i);l.appendChild(n);l.appendChild(pr);fs.appendChild(l);
+    });
+  }
+  function regels(){
+    var p=vind(st.pakket),r=[[p.naam,euro(p.prijs)]],tot=p.prijs;
+    if(soort()==='auto'&&toeslag[st.voertuig]){r.push([voertuigNaam[st.voertuig],'+'+euro(toeslag[st.voertuig])]);tot+=toeslag[st.voertuig];}
+    if(soort()==='auto')extras.forEach(function(x){if(st.extras[x.id]){r.push([x.naam,'+'+euro(x.prijs)]);tot+=x.prijs;}});
+    r.push(['Voorrijden binnen 15 km','gratis']);
+    return {r:r,tot:tot,va:p.va,p:p};
+  }
+  function reken(){
+    var g=regels();
+    $('totaal').textContent=(g.va?'v.a. ':'')+euro(g.tot);
+    $('duur').textContent=g.p.duur;
+    var ul=$('regels');ul.innerHTML='';
+    g.r.forEach(function(x){var li=document.createElement('li');var a=document.createElement('span');a.textContent=x[0];var b=document.createElement('span');b.textContent=x[1];li.appendChild(a);li.appendChild(b);ul.appendChild(li);});
+    syncBoek();
+  }
+  document.querySelectorAll('input[name=voertuig]').forEach(function(i){i.addEventListener('change',function(){
+    var was=soort();st.voertuig=i.value;
+    if(soort()!==was){st.pakket=soort()==='motor'?'mwash':'signature';}
+    tekenPakketten();tekenExtras();reken();
+  });});
+
+  /* booking */
+  var bV=$('b-voertuig'),bP=$('b-pakket');
+  Object.keys(voertuigNaam).forEach(function(k){var o=document.createElement('option');o.value=k;o.textContent=voertuigNaam[k];bV.appendChild(o);});
+  function vulPakketSelect(){bP.innerHTML='';lijst().forEach(function(p){var o=document.createElement('option');o.value=p.id;o.textContent=p.naam+', '+(p.va?'v.a. ':'')+euro(pakPrijs(p));bP.appendChild(o);});var w=document.createElement('option');w.value='weet';w.textContent='Weet ik nog niet';bP.appendChild(w);}
+  function syncBoek(){bV.value=st.voertuig;vulPakketSelect();bP.value=st.pakket;}
+  bV.addEventListener('change',function(){var r=document.querySelector('input[name=voertuig][value='+bV.value+']');r.checked=true;r.dispatchEvent(new Event('change'));});
+  bP.addEventListener('change',function(){if(bP.value!=='weet'){st.pakket=bP.value;tekenPakketten();reken();}});
+
+  var stap=1;
+  function toon(n){
+    stap=n;document.querySelectorAll('[data-step]').forEach(function(s){s.hidden=+s.getAttribute('data-step')!==n;});
+    document.querySelectorAll('.progress i').forEach(function(i){i.classList.toggle('on',+i.getAttribute('data-p')<=Math.min(n,3));});
+    $('stap-label').textContent=n<4?'Stap '+n+' van 3':'Controleer je aanvraag';
+    var h=document.querySelector('[data-step="'+n+'"] h3');if(h){h.setAttribute('tabindex','-1');h.focus({preventScroll:true});}
+  }
+  function fout(id,msg){var el=$('b-'+id);el.setAttribute('aria-invalid',msg?'true':'false');$('e-'+id).textContent=msg;return !msg;}
+  document.querySelectorAll('[data-next]').forEach(function(b){b.addEventListener('click',function(){
+    if(stap===2&&!fout('postcode',$('b-postcode').value.trim()?'':'Vul je postcode in, dan weten we of we gratis voorrijden.'))return;
+    toon(stap+1);
+  });});
+  document.querySelectorAll('[data-prev]').forEach(function(b){b.addEventListener('click',function(){toon(stap-1);});});
+  $('b-klaar').addEventListener('click',function(){
+    var ok1=fout('naam',$('b-naam').value.trim()?'':'Vul je naam in, dan weten we wie we appen.');
+    var ok2=fout('tel',$('b-tel').value.trim()?'':'Vul je telefoonnummer in. Daar sturen we de bevestiging naartoe.');
+    if(!ok1||!ok2)return;
+    var g=regels(),pak=bP.value==='weet'?'Weet ik nog niet':g.p.naam+' ('+(g.va?'v.a. ':'')+euro(g.tot)+')';
+    var moment=document.querySelector('input[name=moment]:checked').value;
+    var rows=[['Voertuig',voertuigNaam[st.voertuig]+($('b-auto').value.trim()?', '+$('b-auto').value.trim():'')],['Pakket',pak]];
+    if(soort()==='auto'){var ex=extras.filter(function(x){return st.extras[x.id];}).map(function(x){return x.naam;});if(ex.length)rows.push(['Extra’s',ex.join(', ')]);}
+    rows.push(['Voorkeur',moment],['Postcode',$('b-postcode').value.trim()],['Naam',$('b-naam').value.trim()],['Telefoon',$('b-tel').value.trim()]);
+    if($('b-opm').value.trim())rows.push(['Opmerking',$('b-opm').value.trim()]);
+    var ul=$('recap');ul.innerHTML='';rows.forEach(function(x){var li=document.createElement('li');var a=document.createElement('span');a.textContent=x[0];var b=document.createElement('span');b.textContent=x[1];li.appendChild(a);li.appendChild(b);ul.appendChild(li);});
+    var msg=['Hoi Detailing &Co, ik wil graag een afspraak.'].concat(rows.map(function(x){return x[0]+': '+x[1];}));
+    $('b-wa').href='https://wa.me/'+NUMMER+'?text='+encodeURIComponent(msg.join('\n'));
+    toon(4);
+  });
+
+  /* before / after */
+  var ba=$('ba'),range=ba.querySelector('input');
+  range.addEventListener('input',function(){ba.style.setProperty('--pos',range.value+'%');});
+
+  /* floating button hides near the booking form */
+  var fl=$('float'),boek=$('boeken'),top=$('top');
+  if('IntersectionObserver' in window){
+    var zicht={boek:false,top:true};
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){zicht[e.target===boek?'boek':'top']=e.isIntersecting;});fl.hidden=zicht.boek||zicht.top;},{threshold:0.15});
+    io.observe(boek);io.observe(top);
+  }
+
+  tekenPakketten();tekenExtras();reken();
+})();
+</script>
+</body>
+</html>
